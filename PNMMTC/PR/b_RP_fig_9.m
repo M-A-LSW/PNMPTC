@@ -40,10 +40,9 @@ fprintf('PNA ||x-x^*||^2 = %.4e\n',norm(x1(end,:)'-x)^2);
 L = 1;
 A_da = 10;
 B_da = 10;
-C_da = 10;
 R_da1 = 0.5;
 R_da2 = 1.5;
-dxdt3 = @(t, x,grad) -(A_da/(norm(x-proximal(x - lambda * grad, lambda * alpha)))^(1-R_da1)+B_da/norm(x-proximal(x - lambda * grad, lambda * alpha))^(1-R_da2)+C_da)*(x-proximal(x - lambda * grad, lambda * alpha)) ;
+dxdt3 = @(t, x,grad) -(A_da/(norm(x-proximal(x - lambda * grad, lambda * alpha)))^(1-R_da1)+B_da/norm(x-proximal(x - lambda * grad, lambda * alpha))^(1-R_da2))*(x-proximal(x - lambda * grad, lambda * alpha)) ;
 tic;
 [t2, x2] = ode23(@(t, x) dxdt3(t, x,-(1/m)*X_with_int' * (y - exp(X_with_int * x))),tspan, x0);
 time3= toc

@@ -38,10 +38,10 @@ ode2 = @(t, y, Z) delay_model_full(t, y, Z, gain2, P2);
 %% ===================== FXPNA =====================
 lambda3 = 0.6;
 alpha_reg3 = 0.01;
-A3 = 10; B3 = 10; C3 = 20; R1_3 = 0.5; R2_3 = 1.5;
+A3 = 10; B3 = 10; R1_3 = 0.5; R2_3 = 1.5;
 P3 = @(x) P_func_general(x, lambda3, alpha_reg3);
 history3 = @(t) [x0; alpha_delay * P3(x0)];
-gain3 = @(t, x) A3 / (norm(P3(x))^(1-R1_3)) + B3 / (norm(P3(x))^(1-R2_3)) + C3;
+gain3 = @(t, x) A3 / (norm(P3(x))^(1-R1_3)) + B3 / (norm(P3(x))^(1-R2_3));
 ode3 = @(t, y, Z) delay_model_full(t, y, Z, gain3, P3);
 
 %% =====================TvNOA =====================
