@@ -84,7 +84,7 @@ legend('T_p=0.1','T_p=0.5','T_p=1','T_p=2');
 %%
 function x_t = PTDDN_dxdt(t,x,A,b,grad,n,T)
 alpha = 0.001; 
-lambda = 0.85; 
+lambda = 1.5; 
 Tp = T;
 r = 1;
 proximal = @(x_new, da) sign(x_new) .* max(abs(x_new) - da, 0);

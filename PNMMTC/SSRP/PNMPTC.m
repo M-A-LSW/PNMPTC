@@ -3,6 +3,7 @@ clc;clear;
 data = load('SSRP_1.mat');
 A = data.A; b = data.b; x = data.x;
 [~,n]=size(A);
+
 %%
 alpha = 0.001; 
 
@@ -12,7 +13,7 @@ Tp=1;
 tspan = [0 Tp];
 x0= zeros(n, 1);
 tic;
-[t1, x1] = ode23(@(t, x) PNMPTC_dxdt(t, x,A,b,A'*(A * x - b),n,Tp),tspan, x0);%grad实时变化
+[t1, x1] = ode23(@(t, x) PNMPTC_dxdt(t, x,A,b,A'*(A * x - b),n,Tp),tspan, x0);
 time=toc
 % filename = 't.mat'; 
 % save(filename, 't1');
